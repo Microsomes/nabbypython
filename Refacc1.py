@@ -76,6 +76,15 @@ def player_health_start():
         return 80
 
 
+def difficulty_percentage_attack():
+    if gameState["difficulty"]== "1":
+        return 30
+    elif gameState["difficulty"]== "2":
+        return 40
+    elif gameState["difficulty"]== "3":
+        return 50
+
+
 def start_fight():
     print ("You Go for his gun and are able to take it out his holster but not before he knocks it out your hads you find yourself in a fight to death")
 
@@ -93,19 +102,14 @@ def start_fight():
 
         print("enemy is alive")
         attackOption = input("Pick a action by giving a number \n Option 1 : attack \n ").lower()
-        randomStength=random.randint(0,15)
+        randomStength=random.randint(0,100)
 
-        
-
-        if randomStength % 2==0:
+        if randomStength>difficulty_percentage_attack():
             print("-------------------------------------")
             enemry_health-=randomStength
             print("You attacked him")
             print ("His HP is at " + str((enemry_health)))
             print("-------------------------------------")
-
-
-
         else:
             print("-------------------------------------")
             print("The gaurd countered your move6. \n ")
@@ -113,18 +117,6 @@ def start_fight():
             print("Your HP is at "+str(player_health))
             print("-------------------------------------")
         
- 
-            
-
-
- 
-
-     
-
-    
-difficulty = pick_difficulty()
-gameState['difficulty'] = difficulty
-start_fight()
 
 def encounter4():
     print("Day 5 \n  After finally making it to the compound through crowds of people and burning heaps. You get to the check point and are stopped by a security officer and taken to another room, he subtly demands a bribe but you have no money so you give him your wedding ring which then responds with *Thats not enough for the both of you*. You then know you only have two options either to attack him or just let Sara go alone.")
@@ -409,4 +401,4 @@ def start_game():
 
 
 # runs the game
-#start_game()
+start_game()
