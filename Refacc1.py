@@ -38,10 +38,15 @@ def pick_difficulty():
 
 
 
+def encounter4():
+    print("encounter 4")
+    pass
+
+
 
 def encounter3_part1_02():
     print (" You walk down the path for days and it you finnaly see road throught the bushes, the compound is in sight.")
-    
+    encounter4()
     pass
 
 
@@ -82,7 +87,6 @@ def encounter3_part1():
 
 
 
-    pass
 
 def encounter3_part3():
     print (" You take cover behind a abandoned vehicle but just before you can think of a plan, you get attacked from behind and as he chokes you realise you have to make a choice")
@@ -92,8 +96,20 @@ def encounter3_part3():
         print(" ")
         print ("You bite a chunk out of his arm and while his distracted you run in to buses with a terrified Sara but not before youre back pack is torn from your back in last ditch effort by the man. You are able to make your way arround the man made check point and reach a path")
         print(" ")
-
-    pass
+        gameState["inventory"].remove("Map")
+        encounter3_part1_02()
+    elif userOption== "2":
+        if findInventoryItem("Gun"):
+            print(" ")
+            print (" You reach for your gun and shoot the man in his head, and grab sara and run into the bushes but drop the gun")
+            gameState["moralCompass"]+=5
+            encounter3_part1_02()
+        else:
+            print ("*You dont have a Gun, try biting them instead*")
+            encounter3_part3()
+    else:
+        print("invalid input")
+        encounter3_part3()
 
 def encounter3():
     print (" Day 3 \n  its chaos a first but after the 2 days it calms down. You end up at traffic jam that wont move for a few days. You see a dirt path that could eithe take that or leave the vehicle, what do you choose. ")
