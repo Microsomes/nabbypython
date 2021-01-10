@@ -41,6 +41,11 @@ def pick_difficulty():
     return Difficulty
 
 
+
+def story_ending_1():
+    print (" You put on the gaurds uniform and use his keycard to board the ship, As you shoot off in to space you hold Sara tight and eatch the world get smaller and smaller. You think about all the things you had to do to get here and dont regret anything. \n End of Game ")
+    print("Moral Compass Score:"+str(gameState['moralCompass']))
+
 def story_ending_2():
     print(" You tell Sara that everything is going be okay and tell the gaurd to take her. You watch the ships fly off while thinking about the good times together, You think maybe there was another way but stop yourself from thing that becuase it woulf do harm them good. Your did what you had to and have no regrets.")
     if findInventoryItem("Picture"):
@@ -48,6 +53,9 @@ def story_ending_2():
 
     print("Moral Compass Score:"+str(gameState['moralCompass']))
 
+def story_ending_3():
+    print (" The guard grabs the gun after beating you bloody you tell Sara everthing is going to be okay, after he shoots you  \n End of Game ")
+    print("Moral Compass Score:"+str(gameState['moralCompass']))
 
 
 def enemy_health_start():
@@ -74,12 +82,13 @@ def start_fight():
     enemry_health= enemy_health_start()
     player_health= player_health_start()
 
-    while enemry_health>=1:
+    while True:
         if(player_health<=0):
-            print("You dead bitch")
+            story_ending_3()
             break
         if(enemry_health<=0):
-            print("He died")
+            print("You get knocked back on to the floor and spot the gun that lost in the struggle, you reach for it and pummel him with the handle")
+            story_ending_1()
             break
 
         print("enemy is alive")
@@ -99,7 +108,7 @@ def start_fight():
 
         else:
             print("-------------------------------------")
-            print("The gaurd countered your move. \n ")
+            print("The gaurd countered your move6. \n ")
             player_health-=randomStength
             print("Your HP is at "+str(player_health))
             print("-------------------------------------")
